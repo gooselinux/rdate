@@ -1,0 +1,21 @@
+diff -urp rdate-1.4/rdate.c rdate-1.4_mzk/rdate.c
+--- rdate-1.4/rdate.c	2004-04-21 20:44:22.000000000 +0200
++++ rdate-1.4_mzk/rdate.c	2007-07-10 18:31:56.000000000 +0200
+@@ -87,7 +87,7 @@ rdate(const char *hostname, time_t *retv
+ #endif
+   int fd;
+   unsigned char time_buf[4];
+-  int nr, n_toread;
++  int nr = 0, n_toread;
+ 
+   assert(hostname);
+   assert(retval);
+@@ -266,7 +266,7 @@ int main(int argc, char *argv[])
+ 	    }
+ 	  break;
+ 	default:
+-	  hosts = realloc(hosts, sizeof(char *) * nhosts+1);
++	  hosts = realloc(hosts, sizeof(char *) * (nhosts+1));
+ 	  hosts[nhosts++] = argv[i];
+ 	  break;
+ 	}
